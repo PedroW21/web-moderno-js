@@ -1,0 +1,14 @@
+header, nav {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+footer {
+    margin-top: 50%;
+    text-align: center;
+}
