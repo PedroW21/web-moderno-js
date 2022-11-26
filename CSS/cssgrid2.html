@@ -20,6 +20,33 @@
             border: solid 5px dodgerblue;
             background: #fff;
         }
+
+        body
+        {
+            display: grid;
+            /* Dando nomes as linhas (q locura) */
+            grid-template-columns: 
+                [inicio] 1fr 
+                [meio1 metade1] 1fr 
+                [metade2 meio2] 1fr 
+                [fim];
+            grid-template-rows: repeat(3, 1fr);
+
+            column-gap: 20px;
+            row-gap: 20px;
+            /* row, column */
+            gap: 50px 10px;
+        }
+
+        .d1 {
+            grid-column-start: meio2;
+            grid-column-end: fim;
+            grid-column: meio1 / fim;
+            grid-row: 1 / span 2;
+
+            /* row-start, column-start, row-end, column-end */
+            grid-area: 1 / metade1 / span 3 / fim;
+        }
     </style>
 </head>
 

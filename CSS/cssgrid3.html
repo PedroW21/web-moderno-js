@@ -5,8 +5,56 @@
     <meta charset="UTF-8">
     <title>CSS Grid #03</title>
     <link rel="stylesheet" href="css/tag.css">
-    <style>
-        /* ... */
+    <style> 
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            grid-area: cabecalho;
+            border: 1px solid orangered;
+        }
+
+        nav {
+            grid-area: navegacao;
+            border: 1px solid blue;
+        }
+
+        main {
+            grid-area: conteudo;
+            border: 1px solid green;
+        }
+
+        footer {
+            grid-area: rodape;
+            border: 1px solid violet;
+        }
+
+        body {
+            display: grid;
+            min-height: 100vh;
+            grid-template-columns: 300px 1fr;
+            grid-template-rows: 100px 1fr 100px;
+            grid-template-areas: 
+            'cabecalho cabecalho'
+            'navegacao conteudo'
+            'rodape rodape';
+        }
+
+        @media (max-width: 700px) {
+            body 
+            {
+                grid-template-columns: 1fr;
+                grid-template-rows: 80px 80px 1fr 100px;
+                grid-template-areas: 
+                'cabecalho'
+                'navegacao'
+                'conteudo'
+                'rodape';
+            }
+        }
+
     </style>
 </head>
 

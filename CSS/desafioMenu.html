@@ -7,7 +7,121 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        /* ... */
+        
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body 
+        {
+            background-color: gainsboro;
+        }
+
+        .cabecalho 
+        {
+            background-color: #333;
+            height: 80px;
+            border-bottom: 3px solid #4faddb;
+            box-sizing: content-box;
+        }
+
+        img 
+        {
+            height: 100%;
+        }
+
+        .logo 
+        {
+            display: inline-block;
+            height: 80px;
+            padding: 15px;
+        }
+
+        .menu-toggle 
+        {
+            display: none;
+            float: right;
+            color: #eee;
+            background-color: #555;
+            border: solid 1px #777;
+            border-radius: 5px;
+            height: 40px;
+            padding: 10px 20px;
+            margin: 15px;
+        }
+
+        /* Nav */
+
+        .menu
+        {
+            display: inline-block;
+            vertical-align: top;
+            height: 80px;
+            padding: 15px;
+        }
+        
+        .menu li:hover 
+        {
+            background-color: #6196b2;
+            cursor: pointer;
+        }
+
+        ul li {
+            display: inline-block;
+            padding: 15px;
+        }
+
+        a {
+            color: #FFF;
+            text-decoration: none;
+            font-family: "Oswald", serif;
+        }
+
+        .autenticacao {
+            display: inline-block;
+            float: right;
+            height: 80px;
+            padding: 30px;
+        }
+
+        .autenticacao a {
+            padding: 10px;
+        }
+
+        .botao 
+        {
+            border-radius: 30px;
+            padding: 10px 25px;
+        }
+
+        .destaque {
+            background-color: red;
+        }
+
+        .selected {
+            background-color: #6196b2;
+        }
+
+        @media (max-width: 810px) {
+            .autenticacao {
+                display: none;
+            }
+        }
+
+        @media (max-width: 679px) 
+        {
+            .menu {
+                display: none;
+            }
+
+            .menu-toggle
+            {
+                display: inline-block;
+            }
+        }
+
     </style>
 </head>
 
@@ -44,7 +158,19 @@
     </header>
 
     <script>
-        // ...
+        window.onhashchange = function(e) 
+        {
+            const oldUrl = e.oldURL.split("#")[1];
+            const newUrl = e.newURL.split("#")[1];
+
+            const oldMenu = document.querySelector(`.menu a[href="#${oldUrl}"]`);
+            const newMenu = document.querySelector(`.menu a[href="#${newUrl}"]`);
+
+            oldMenu && oldMenu.classList.remove("selected");
+            newMenu && newMenu.classList.add("selected");
+
+        }
+
     </script>
 </body>
 
