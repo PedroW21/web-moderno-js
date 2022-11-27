@@ -12,7 +12,21 @@
         <p>Texto Inicial</p>
     </div>
     <script>
-        // ...
+
+        const div = document.querySelector('div');
+        div.innerHTML = "hehe boy"; // substitui oq tiver la por texto puro
+        //div.outerHTML = 'Alterei boy'; //matei a div cupade
+        div.insertAdjacentHTML('beforebegin', '<p>eforebegin</p>');
+        div.insertAdjacentHTML('afterbegin', '<p>afterbegin</p>');
+        div.insertAdjacentHTML('beforeend', '<p>beforeend</p>');
+        div.insertAdjacentHTML('afterend', '<p>afterend</p>');
+
+        // somente texto (sem tags)
+
+        console.log(div.innerHTML);
+        console.log(div.innerText);
+
+
     </script>
 </body>
 

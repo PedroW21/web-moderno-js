@@ -10,14 +10,40 @@
 <body class='conteudo exercicio'>
     <div>
         <label for="compras">Compras</label>
-        <ul id="compras" destino='escritório' data-urgencia="5">
+        <ul id="compras" destino='escritório' data-urgencia="5" data-valor="13.99">
             <li>Café</li>
             <li>Água</li>
             <li>Copo Descartável</li>
         </ul>
     </div>
     <script>
-        // ...
+        
+        const lista = document.querySelector('div ul[destino="escritório"]'); // seria mais inteligente o ID compras, mas aqui estamos so variandp
+
+        console.log("Elemento 'ul'.....:");
+        console.log("childNodes", lista.childNodes);
+        console.log('destino', lista.id);
+        console.log('destino', lista.destino); // por ser uma propriedade custom, da undefined
+        console.log('getAttribute', lista.getAttribute('destino'));
+        console.log('hasAttribute', lista.hasAttribute('destino'));
+        lista.setAttribute('destino', 'empresaGrande');
+        lista.setAttribute('status', 'aberto'); // adiciona um atributo
+        lista.removeAttribute('destino');
+
+        //por ter prefixo "data-" tem uma pequena diferença
+
+        console.log(lista.dataset);
+        console.log(lista.dataset.urgencia);
+        lista.dataset.urgencia = 3;
+        console.log('getAtribute("data-urgencia")', lista.getAttribute('data-urgencia'));
+
+        //cuidados para ter
+
+        const label = document.querySelector('label');
+        console.log(label.for);
+        console.log(label.htmlFor);
+        console.log(label.getAttribute('for'));
+
     </script>
 </body>
 

@@ -22,7 +22,26 @@
         <p>Fim</p>
     </div>
     <script>
-        // ...
+        
+        const lista = document.querySelector("div ul");
+        
+        console.log(lista.parentNode);
+        console.log(lista.childNodes); // tem elementos text entre os existentes pois tem "espaços em branco" no html
+
+        const primeiro = lista.firstChild;
+        console.log(primeiro);
+        console.log(primeiro.nextSibling);
+        
+        const ultimo = lista.lastChild;
+        console.log(ultimo);
+        console.log(ultimo.previousSibling);
+        
+        console.log(lista.children);
+        console.log(lista.firstElementChild); // não le os espaços em branco
+        console.log(lista.lastElementChild);
+        console.log(lista.parentNode.previousElementSibling);
+        console.log(lista.parentNode.nextElementSibling);
+
     </script>
 </body>
 
