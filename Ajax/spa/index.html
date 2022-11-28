@@ -25,6 +25,43 @@
     </nav>
     <div class="pagina"></div>
     <script>
-        // ...
+        // colocamos o push true ali para que a volta do usuario não seja registrada
+        function navegarViaAjax(url, seletor, push = true)
+        {
+            if(!url || !seletor) return;
+
+            const elemento = document.querySelector(seletor);
+
+            fetch(url)
+                .then(res => res.text()) // pegamos o html via .text(), não queremos o json
+                .then(html => {
+                    elemento.innerHTML = html;
+                    if(push)
+                    {
+                        history.pushState({ seletor }, null, url) // null = titulo da pag
+                        // aqui estamos colocando o elemento no historico do browser
+                    }
+                })
+        }
+
+        document.querySelectorAll('[wm-link]').forEach(link => {
+            const url = link.attributes['wm-link'].value;
+            const seletorDestino = link.attributes['wm-destino'].value;
+
+            link.onclick = e => {
+                e.preventDefault();
+                navegarViaAjax(url, seletorDestino);
+            }
+        })
+
+        window.onpopstate = e => {
+            if(e.state)
+            {
+                console.log(e)
+                // isso que permite a volta a pagina anteiror, temos um estado salvo do link anteior (que fizemos acima) e qd voltamos pegamos dessa stack(pilha), e no ultimo argumento pedimos pra não salvar essa volta
+                navegarViaAjax(window.location.href, e.state.seletor, false);
+            }
+        };
+
     </script>
 </body>
