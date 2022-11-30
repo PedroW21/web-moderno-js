@@ -21,6 +21,25 @@
     <input type="text" placeholder="Digite e Selecione">
     <div id="resultado2">?</div>
     <script>
-        // ...
+        
+        const alternarDestaque = () => $('#div1').toggleClass('destaque');
+        $('#div1').hover(alternarDestaque, alternarDestaque); // aceita dois parametros, 1 para entrar e outra para sair
+
+        $('#div1').one('mouseenter', e => alert('AVISO: VOCÊ É MANE!'));
+        $('#div1').dblclick(e => $('#div1').fadeOut(5000).fadeIn(2500));
+
+        $(window).resize(function(e)
+        {
+            const screenWidth = $(window).width();
+            const screenHeight = $(window).height();
+            $('#resultado1').html(`Largura: ${screenWidth} | Altura: ${screenHeight}`);
+        })
+
+        $(':input').select(e => {
+            const inicio = e.target.selectionStart;
+            const fim = e.target.selectionEnd;
+            $('#resultado2').html(e.target.value.substring(inicio, fim));
+        })
+
     </script>
 </body>

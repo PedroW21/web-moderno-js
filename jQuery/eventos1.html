@@ -20,6 +20,40 @@
     <input type="text" placeholder="Cor de Background">
 
     <script>
-        // ...
+        
+        function mostrarPosicaoMouse(e)
+        {
+            $('#posicao').html(`x: ${e.clientX} y: ${e.clientY}`);
+
+        }
+
+        $('body').on('mousemove', mostrarPosicaoMouse);
+        $('#posicao').mouseover(e => {
+            $('body').off('mousemove', mostrarPosicaoMouse);
+        });
+        $('#posicao').mouseleave( e => {
+            $('body').mousemove(mostrarPosicaoMouse);
+        });
+
+        let clique = 0;
+
+        $('body').click(e => {
+            $('#cliques').html(`Cliques: ${++clique}`);
+        });
+
+        const backgroundOriginal = $('body').css('background-color'); // guardando a cor original
+
+        $('input').keyup(function (e) { // não daria pra usar arrow aqui pois o this aponta para window, e nao para o obj jquery
+            const valor = $(this).val();
+            if(valor.match(/#[\da-fA-F]{3,6}/))
+            {
+                $('body').css('background-color', valor);
+            }
+            else
+            {
+                $('body').css('background-color', backgroundOriginal);
+            }
+        });
+
     </script>
 </body>

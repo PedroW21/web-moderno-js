@@ -20,6 +20,17 @@
             { nome: 'Julia', nota: 9.7 }
         ]
         
-        // ...
+
+        const elements = pessoas.map(pessoa => $(`
+        <tr>
+        <td>${pessoa.nome}</td> 
+        <td>${pessoa.nota}</td>
+        </tr>
+        `));
+        
+        const table = $('<table>').append(elements);
+
+        $('#conteudo').append(table);
+        
     </script>
 </body>

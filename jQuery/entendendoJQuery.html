@@ -14,6 +14,18 @@
     <div>2</div>
 
     <script>
-        // ...
+        
+        $('div').hide(5000).show(500).fadeOut(2500);
+        // funções utilitarias
+        console.log($('div').get(0));
+        console.log($.isEmptyObject({}));
+        console.log(jQuery.inArray(3, [3,2,1]));
+
+        $.fn.fundoLaranja = function () {
+            this.css('background-color', '#f67828')
+            return this; //retornando o obj q o jquey fez da DOM
+        }
+
+        $('body').fundoLaranja();
     </script>
 </body>
