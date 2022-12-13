@@ -1,0 +1,46 @@
+.table
+{
+    width: 80vw;
+
+    margin-top: 1.2rem;
+    background-color: aquamarine;
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+
+thead td {
+    padding: 1.5rem;
+    font-size: 1.8em;   
+    font-family: 'Indie Flower', cursive;
+    font-weight: 800;
+}
+
+.thead-td
+{
+    border-right: 1px solid #000;
+}
+
+.thead-td__remove
+{
+    padding: 0rem;
+    border-bottom: 1px solid #000;
+
+}
+
+tbody
+{
+    border-right: 1px solid #000;
+}
+
+tbody td 
+{
+    font-size: 1.4em;
+    padding: 1.2rem;
+    font-family: cursive;
+}
+
+.trow-td__product, .trow-td__price, .trow-td__btn-remove
+{
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;
+}

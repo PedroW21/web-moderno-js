@@ -1,0 +1,22 @@
+.input
+{
+    width: 50%;
+    font-family: 'Indie Flower', cursive;
+    font-weight: 800;
+}
+
+.label {
+    display: block;
+    font-size: 1.8em;
+}
+
+input
+{
+    width: 80%;
+    height: 3em;
+    border-radius: 25px;
+    border: #000 solid 1px;
+    padding-left: 1rem;
+    font-size: 1.4em;
+}
+

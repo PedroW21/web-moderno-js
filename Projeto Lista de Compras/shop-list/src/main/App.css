@@ -1,0 +1,45 @@
+.App
+{
+  background-color: aliceblue;
+  height: 100vh;
+  width: 100vw;
+  
+  overflow-y: scroll;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 
+{
+  font-size: 3em;
+  padding-top: 1.2rem;
+  font-family: 'Indie Flower', cursive;
+  font-weight: 400;
+}
+
+.inputs
+{
+    display: flex;
+    width: 100vw;
+    justify-content: space-around; 
+}
+
+.buttons 
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 50%;
+  margin-top: 2em;
+}
+
+.totalValue 
+{
+  margin-top: 1.2rem;
+  font-size: 1.5em;
+  font-weight: 800;
+  color: #3CB046
+}
