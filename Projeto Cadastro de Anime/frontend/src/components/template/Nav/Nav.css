@@ -1,0 +1,47 @@
+aside.menu-area
+{
+    background-color: var(--bg-aside);
+    box-shadow: 
+    2px 0 10px 0 rgba(0, 0, 0, 0.12)
+    2px 0 15px rgba(0, 0, 0, 0.09);
+}
+
+.menu a
+{
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+
+    color: #FFF;
+    font-weight: 300;
+    font-size: 1.2em;
+}
+
+.menu a:hover
+{
+    background: linear-gradient(to right, #f5af19, #f12711);
+}
+
+@media (max-width: 768px)
+{
+    .menu
+    {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .menu a 
+    {
+        display: inline;
+        padding: 10px;
+        margin: 0px;
+    }
+
+    .menu 
+    {
+        height: 100%;
+        justify-content: space-around;
+    }
+
+}

@@ -1,0 +1,65 @@
+{
+  "animesWatched": [
+    {
+      "id": 1,
+      "name": "Violet Evergarden",
+      "streaming": "Netflix",
+      "quantitySeasons": 1,
+      "quantityEps": [
+        {
+          "firstSeason": 13
+        }
+      ],
+      "movies": 1,
+      "hasFinished": false
+    },
+    {
+      "id": 2,
+      "name": "Boku no Hero",
+      "streaming": "Crunchyroll",
+      "quantitySeasons": 6,
+      "quantityEps": [
+        {
+          "season1": 13
+        },
+        {
+          "season2": 24
+        },
+        {
+          "season3": 24
+        },
+        {
+          "season4": 24
+        },
+        {
+          "season5": 24
+        },
+        {
+          "season6": 25
+        }
+      ],
+      "movies": 0,
+      "hasFinished": false
+    }
+  ],
+  "animesToWatch": [
+    {
+      "id": 1,
+      "name": "Soul Eater",
+      "streaming": "Crunchyroll",
+      "quantitySeasons": 1,
+      "quantityEps": "51",
+      "movies": 0,
+      "hasFinished": "Sim"
+    },
+    {
+      "name": "Demon Slayer",
+      "streaming": "Crunchyroll",
+      "quantitySeasons": "3",
+      "quantityEps": "24",
+      "movies": "1",
+      "hasFinished": "Não",
+      "id": 2
+    }
+  ]
+}
