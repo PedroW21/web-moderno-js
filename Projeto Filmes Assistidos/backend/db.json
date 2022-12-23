@@ -1,0 +1,47 @@
+{
+  "watched": {
+    "movies": [
+      {
+        "name": "Avatar",
+        "duration": 200
+      }
+    ],
+    "animes": [],
+    "series": [
+      {
+        "name": "The Rise of Ottomans",
+        "seasons": "1",
+        "episodes": {
+          "season1": "8"
+        }
+      }
+    ]
+  },
+  "toWatch": [
+    {
+      "id": "1",
+      "name": "Soul Eater",
+      "type": "anime",
+      "streaming": "Crunchyroll",
+      "movies": "0",
+      "seasons": "1",
+      "episodes": {
+        "season1": "48"
+      },
+      "finished": "true"
+    },
+    {
+      "name": "11",
+      "type": "anime",
+      "streaming": "12",
+      "movies": "11",
+      "seasons": "2",
+      "episodes": {
+        "season1": "12",
+        "season2": "2"
+      },
+      "finished": false,
+      "id": "JgaIUAo"
+    }
+  ]
+}

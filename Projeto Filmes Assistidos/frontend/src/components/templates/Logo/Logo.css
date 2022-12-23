@@ -1,0 +1,17 @@
+aside.logo
+{
+    height: var(--logo-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--menu-color);
+}
+
+aside.logo .logoText
+{
+    font-size: 1em;
+    font-family: 'Baby Doll', cursive;
+
+    color: var(--menu-text-color);
+}

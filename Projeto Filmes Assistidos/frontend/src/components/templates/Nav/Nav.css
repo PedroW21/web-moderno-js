@@ -1,0 +1,25 @@
+
+aside.menu-area
+{
+    background-color: var(--menu-color);
+}
+
+aside.menu-area nav
+{
+    display: flex;
+    flex-direction: column;
+}
+
+aside.menu-area nav *
+{
+    padding: 10px;
+    text-decoration: none;
+    color: var(--menu-text-color);
+
+    font-size: 1em;
+}
+
+aside.menu-area nav a:hover
+{
+    background: linear-gradient(90deg, hsla(227, 15%, 24%, 1) 0%, hsla(211, 36%, 46%, 1) 100%);
+}
