@@ -1,65 +1,55 @@
-const Table = (props) => 
-{
-  const renderRows = (obj, editAction, deleteAction) => 
-  {
-    
-    return obj.map((anime, idx) => {
-      return (
-        <tr key={idx}>
-          <td>{anime.name}</td>
-          <td>{anime.streaming}</td>
-          <td>{anime.movies}</td>
-          <td>{anime.seasons}</td>
-          <td>
-            <ul className="list-unstyled">
-                {renderEps(anime.episodes)}
-            </ul>
-          </td>
-          <td>{anime.finished ? "Sim" : "Não"}</td>
-          <td>
-            <button
-              className="btn btn-warning m-1"
-              onClick={() => editAction(anime)}
-            >
-              <i className="fa fa-pencil"></i>
-            </button>
-            <button
-              className="btn btn-danger m-1"
-              onClick={() => deleteAction(anime)}
-            >
-              <i className="fa fa-trash"></i>
-            </button>
-          </td>
-        </tr>
-      );
+const Table = (props) => {
+  function renderTable(tHead, tData) {
+    return (
+      <>
+        <thead>
+          <tr>
+            {tHead.map((e) => (
+              <th key={e}>{e}</th>
+            ))}
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tData.map((data, idx) => (
+            <tr key={idx}>
+              {tableData(data)}
+              <td>
+                <button
+                  className="btn btn-warning m-1"
+                  onClick={() => props.editAction(data)}
+                >
+                  <i className="fa fa-pencil"></i>
+                </button>
+                <button
+                  className="btn btn-danger m-1"
+                  onClick={() => props.deleteAction(data)}
+                >
+                  <i className="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </>
+    );
+  }
+
+  function tableData(data) {
+    let values = Object.entries(data);
+    values = values.filter((value) => {
+      if (value[0] !== "id" && value[0] !== "type") return value;
     });
-  };
-
-  const renderEps = obj =>
-  {
-    let values = Object.values(obj);
-
-    if(values.length > 1)
-    {
-        return values.join(' | ')
-    }
-    return values;
+    return values.map((tdata, idx) => (
+      <td key={tdata[0] + tdata[1] + idx}>
+        {tdata[0] === "selectFinished" ? (tdata[1] ? "Sim" : "Não") : tdata[1]}
+      </td>
+    ));
   }
 
   return (
     <table className="table mt-4 text-center">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Streaming</th>
-          <th>Filmes</th>
-          <th>Temporadas</th>
-          <th>Episodios</th>
-          <th>Terminou?</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>{renderRows(props.props, props.edit, props.delete)}</tbody>
+      {renderTable(props.label, props.data)}
     </table>
   );
 };

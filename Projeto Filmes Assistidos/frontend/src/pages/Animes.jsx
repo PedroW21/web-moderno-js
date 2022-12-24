@@ -1,11 +1,11 @@
 import Main from "../components/templates/Main/Main";
 import {
-  saveOnDb,
+  saveOnDbAnime,
   putOnDb,
   toWatchUrl,
   removeOnDb,
 } from "../components/Requests/Requests";
-import Table from "../components/templates/Table/Table";
+import AnimeTable from "../components/templates/Table/AnimeTable";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -96,7 +96,7 @@ const Animes = (props) => {
 
       setAnime({ animeToAdd: { ...initialState.animeToAdd }, list });
     } else {
-      saveOnDb(anime.animeToAdd);
+      saveOnDbAnime(anime.animeToAdd);
 
       const list = anime.list;
       list.push(anime.animeToAdd);
@@ -254,7 +254,7 @@ const Animes = (props) => {
   return (
     <Main {...headerProps}>
       {renderForm()}
-      <Table props={anime.list} edit={editAnime} delete={deleteAnime} />
+      <AnimeTable props={anime.list} edit={editAnime} delete={deleteAnime} />
     </Main>
   );
 };

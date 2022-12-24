@@ -6,6 +6,7 @@ import {
   removeOnDb,
 } from "../components/Requests/Requests";
 import Form from "../components/templates/Form/Form";
+import Table from "../components/templates/Table/Table";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -31,7 +32,12 @@ const initialState = {
 const fields = {
   name: ["name", "streaming", "duration", "selectFinished"],
   label: ["Nome", "Streaming", "Duração", "Terminou?"],
-  placeholders: ["Digite o nome do filme", "Qual plataforma esta disponivel?", "Quantas horas de duração tem o filme? (HH:MM)", ""]
+  placeholders: [
+    "Digite o nome do filme",
+    "Qual plataforma esta disponivel?",
+    "Quantas horas de duração tem o filme? (HH:MM)",
+    "",
+  ],
 };
 
 const formConfig = {
@@ -40,18 +46,18 @@ const formConfig = {
 };
 
 const Filmes = (props) => {
-
   const [movie, setMovie] = useState({ ...initialState });
 
   //load table when ready
   useEffect(() => {
     axios.get(toWatchUrl).then((res) => {
-      setMovie({ movie: { ...initialState.movie }, list: res.data });
+      let list = res.data;
+      list = list.filter(movie => movie.type === "movie")
+      setMovie({ movie: { ...initialState.movie }, list });
     });
   }, []);
 
   const updateFields = (event) => {
-
     let field = { ...movie.movie };
 
     field[event.target.name] = event.target.value;
@@ -69,12 +75,13 @@ const Filmes = (props) => {
 
       setMovie({ movie: { ...initialState.movie }, list });
     } else {
-      saveOnDb(movie.movie);
+      console.log('in else', movie.list)
+      saveOnDb(movie.movie, movie.list, setMovie, initialState, movie, "movie");
 
-      const list = movie.list;
-      list.push(movie.movie);
+      //const list = movie.list;
+      //list.push();
 
-      setMovie({ movie: { ...initialState.movie }, list });
+      //setMovie({ movie: { ...initialState.movie }, list });
     }
   };
 
@@ -84,7 +91,6 @@ const Filmes = (props) => {
 
   const edit = (movieToEdit) => {
     setMovie({ movie: movieToEdit, list: movie.list });
-    console.log(movie.movie);
   };
 
   const deleteData = (movieToDelete) => {
@@ -108,6 +114,12 @@ const Filmes = (props) => {
         data={movie}
         type={"movie"}
         updateFields={updateFields}
+      />
+      <Table
+        label={fields.label}
+        data={movie.list}
+        editAction={edit}
+        deleteAction={deleteData}
       />
     </Main>
   );

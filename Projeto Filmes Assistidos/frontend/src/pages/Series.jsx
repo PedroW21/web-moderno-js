@@ -6,6 +6,7 @@ import {
   removeOnDb,
 } from "../components/Requests/Requests";
 import Form from "../components/templates/Form/Form";
+import Table from "../components/templates/Table/Table";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -59,7 +60,9 @@ const Series = (props) => {
   //load table when ready
   useEffect(() => {
     axios.get(toWatchUrl).then((res) => {
-      setSeries({ series: { ...initialState.series }, list: res.data });
+      let list = res.data;
+      list = list.filter(serie => serie.type === "series")
+      setSeries({ series: { ...initialState.series }, list });
     });
   }, []);
 
@@ -73,6 +76,7 @@ const Series = (props) => {
 
   const save = () => {
     if (series.series.id) {
+      console.log('in if');
       const seriesToSave = { ...series.series };
       putOnDb(seriesToSave);
 
@@ -81,12 +85,8 @@ const Series = (props) => {
 
       setSeries({ series: { ...initialState.series }, list });
     } else {
-      saveOnDb(series.series);
-
-      const list = series.list;
-      list.push(series.series);
-
-      setSeries({ series: { ...initialState.series }, list });
+      console.log('in else', series.list)
+      saveOnDb(series.series, series.list, setSeries, initialState, series, "series");
     }
   };
 
@@ -121,6 +121,8 @@ const Series = (props) => {
         type={"series"}
         updateFields={updateFields}
       />
+
+      <Table label={fields.label} data={series.list} editAction={edit} deleteAction={deleteData}/>
     </Main>
   );
 };
