@@ -1,47 +1,78 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const Form = (props) => {
   let qtdActualField = 0;
 
-  function renderForm(fields, fieldLabel, qtdRows, qtdFieldPerRow, renderInputs) {
+  function renderForm(
+    fields,
+    fieldLabel,
+    placeholders,
+    qtdRows,
+    qtdFieldPerRow,
+    data,
+    type,
+    renderInputs
+  ) {
     const rows = [];
 
     for (let i = 0; i < qtdRows; i++) {
       rows.push(
-          <div className="row" key={i}>
-            <div className="col-12 col-md-6">
-              <div className="form-group">
-                {renderInputs(fields, fieldLabel, qtdFieldPerRow)}
-              </div>
-            </div>
-          </div>
+        <div className="row" key={i}>
+          {renderInputs(fields, fieldLabel, placeholders, qtdFieldPerRow, data, type)}
+        </div>
       );
     }
 
     return rows.map((e) => {
-      return (e);
+      return e;
     });
   }
 
-  function renderInputs(field, fieldLabel, qtdFieldPerRow) {
+  function renderInputs(field, fieldLabel, placeholders, qtdFieldPerRow, data, type) {
     const fields = [];
 
-    for (let i = 0; i < qtdFieldPerRow; i++) 
-    {
-      fields.push(
-        <>
-          <label>{fieldLabel[qtdActualField]}</label>
-          <input type="text" className="form-control" 
-          name={field[qtdActualField]}/>
-        </>
-      );
+    const normalInput = (qtdActualField) => (
+      <input
+        type="text"
+        className={field[qtdActualField] ? "form-control" : "d-none"}
+        value={data[type][field[qtdActualField]]}
+        name={field[qtdActualField]}
+        onChange={(e) => props.updateFields(e)}
+        placeholder={placeholders[qtdActualField]}
+      />
+    );
 
+    const selectInput = (qtdActualField) => (
+      <select
+        name={field[qtdActualField]}
+        className={field[qtdActualField] ? "form-control" : "d-none"}
+        value={data[type][field[qtdActualField]]}
+        onChange={(e) => props.updateFields(e)}
+        placeholder={placeholders[qtdActualField]}
+      >
+        <option value="false">Não</option>
+        <option value="true">Sim</option>
+      </select>
+    );
+
+
+    for (let i = 0; i < qtdFieldPerRow; i++) {
+      
+
+      fields.push(
+        <div className="col-12 col-md-6" key={field[qtdActualField]}>
+          <div className="form-group">
+            <label>{fieldLabel[qtdActualField]}</label>
+            {field[qtdActualField]?.includes("select")
+              ? selectInput(qtdActualField)
+              : normalInput(qtdActualField)}
+          </div>
+        </div>
+      );
       qtdActualField++;
     }
 
-    console.log(fields);
-    
-    return (
-        fields.map(e => (e))
-    );
+    return fields.map((e) => e);
   }
 
   return (
@@ -49,8 +80,11 @@ const Form = (props) => {
       {renderForm(
         props.fields.name,
         props.fields.label,
+        props.fields.placeholders,
         props.formConfig.qtdRows,
         props.formConfig.qtdFieldPerRow,
+        props.data,
+        props.type,
         renderInputs
       )}
 

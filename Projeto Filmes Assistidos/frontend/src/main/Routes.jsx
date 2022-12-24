@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from '../components/Home/Home';
-import Animes from '../components/NavOptions/Animes';
-import Series from '../components/NavOptions/Series';
-import Filmes from '../components/NavOptions/Filmes';
+import Animes from '../pages/Animes';
+import Series from '../pages/Series';
+import Filmes from '../pages/Filmes';
 
 export default props =>
     <Routes>

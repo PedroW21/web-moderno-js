@@ -1,11 +1,11 @@
-import Main from "../templates/Main/Main";
+import Main from "../components/templates/Main/Main";
 import {
   saveOnDb,
   putOnDb,
   toWatchUrl,
   removeOnDb,
-} from "../Requests/Requests";
-import Table from "../templates/Table/Table";
+} from "../components/Requests/Requests";
+import Table from "../components/templates/Table/Table";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -40,7 +40,9 @@ const Animes = (props) => {
   //load table when ready
   useEffect(() => {
     axios.get(toWatchUrl).then((res) => {
-      setAnime({ animeToAdd: { ...initialState.animeToAdd }, list: res.data });
+      let list = res.data;
+      list = list.filter(anime => anime.type === 'anime')
+      setAnime({ animeToAdd: { ...initialState.animeToAdd }, list });
     });
   }, []);
 
