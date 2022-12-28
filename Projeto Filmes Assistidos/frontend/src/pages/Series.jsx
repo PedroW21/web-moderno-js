@@ -18,18 +18,6 @@ const headerProps = {
     "CRUD de séries com separação das tabelas de séries vistos e séries para ver",
 };
 
-// const initialState = {
-//   animeToAdd: {
-//     name: "",
-//     type: "series",
-//     streaming: "",
-//     seasons: "",
-//     selectEpisodes: "",
-//     selectFinished: false,
-//   },
-//   list: [],
-// };
-
 const initialState = {
     series: {
       name: "",
@@ -76,7 +64,6 @@ const Series = (props) => {
 
   const save = () => {
     if (series.series.id) {
-      console.log('in if');
       const seriesToSave = { ...series.series };
       putOnDb(seriesToSave);
 
@@ -85,7 +72,6 @@ const Series = (props) => {
 
       setSeries({ series: { ...initialState.series }, list });
     } else {
-      console.log('in else', series.list)
       saveOnDb(series.series, series.list, setSeries, initialState, series, "series");
     }
   };
@@ -96,7 +82,6 @@ const Series = (props) => {
 
   const edit = (seriesToEdit) => {
     setSeries({ series: seriesToEdit, list: series.list });
-    console.log(series.series);
   };
 
   const deleteData = (seriesToDelete) => {

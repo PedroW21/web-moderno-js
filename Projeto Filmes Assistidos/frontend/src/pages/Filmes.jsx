@@ -75,7 +75,6 @@ const Filmes = (props) => {
 
       setMovie({ movie: { ...initialState.movie }, list });
     } else {
-      console.log('in else', movie.list)
       saveOnDb(movie.movie, movie.list, setMovie, initialState, movie, "movie");
     }
   };

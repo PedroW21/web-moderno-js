@@ -87,6 +87,14 @@
       },
       "finished": "true",
       "id": "L1IHGMp"
+    },
+    {
+      "name": "teste 3",
+      "type": "movie",
+      "streaming": "teste 3",
+      "duration": "3g3",
+      "selectFinished": false,
+      "id": "VTuevkX"
     }
   ]
 }

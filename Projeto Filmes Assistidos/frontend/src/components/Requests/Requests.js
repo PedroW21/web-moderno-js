@@ -4,8 +4,6 @@ import axios from "axios";
 const toWatchUrl = "http://localhost:3001/toWatch";
 
 function saveOnDb(obj, list, setState, initialState, state, keyName) {
-  console.log("in save", list);
-  console.log("in save - obj", obj);
 
   axios.post(toWatchUrl, obj).then((res) => {
     const actualList = list;
@@ -23,8 +21,4 @@ function removeOnDb(animeToRemove) {
   axios.delete(`${toWatchUrl}/${animeToRemove}`);
 }
 
-function saveOnDbAnime(obj) {
-  axios.post(toWatchUrl, obj);
-}
-
-export { saveOnDb, putOnDb, toWatchUrl, removeOnDb, saveOnDbAnime };
+export { saveOnDb, putOnDb, toWatchUrl, removeOnDb };
