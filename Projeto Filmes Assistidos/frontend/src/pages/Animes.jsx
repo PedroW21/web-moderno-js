@@ -1,6 +1,7 @@
 import Main from "../components/templates/Main/Main";
 import {
   saveOnDbAnime,
+  saveOnDb,
   putOnDb,
   toWatchUrl,
   removeOnDb,
@@ -65,7 +66,6 @@ const Animes = (props) => {
 
   const updateFields = (event) => {
     let field = { ...anime.animeToAdd };
-    console.log(anime.animeToAdd);
 
     if (event.target.name === `season${numSeason}`) {
       field.episodes[event.target.name] = event.target.value;
@@ -82,7 +82,6 @@ const Animes = (props) => {
     const field = { ...anime.animeToAdd };
     field.episodes[`season${event.target.value}`] =
       anime.animeToAdd.episodes[`season${event.target.value}`] || "";
-    console.log(field.episodes);
     setAnime({ animeToAdd: field, list: anime.list });
   };
 
@@ -96,12 +95,7 @@ const Animes = (props) => {
 
       setAnime({ animeToAdd: { ...initialState.animeToAdd }, list });
     } else {
-      saveOnDbAnime(anime.animeToAdd);
-
-      const list = anime.list;
-      list.push(anime.animeToAdd);
-
-      setAnime({ animeToAdd: { ...initialState.animeToAdd }, list });
+      saveOnDb(anime.animeToAdd, anime.list, setAnime, initialState, anime, 'animeToAdd')
     }
   };
 
@@ -111,7 +105,6 @@ const Animes = (props) => {
 
   const editAnime = (animeToEdit) => {
     setAnime({ animeToAdd: animeToEdit, list: anime.list });
-    console.log(anime.animeToAdd);
   };
 
   const deleteAnime = (animeToDelete) => {

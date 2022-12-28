@@ -75,6 +75,18 @@
       },
       "finished": false,
       "id": "EBMWtQY"
+    },
+    {
+      "name": "1",
+      "type": "anime",
+      "streaming": "1",
+      "movies": "1",
+      "seasons": "1",
+      "episodes": {
+        "season1": "1"
+      },
+      "finished": "true",
+      "id": "L1IHGMp"
     }
   ]
 }

@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
-
 const Form = (props) => {
   let qtdActualField = 0;
 
@@ -15,8 +13,9 @@ const Form = (props) => {
   ) {
     const rows = [];
 
+    
+
     for (let i = 0; i < qtdRows; i++) {
-      console.log("row number:", i);
       rows.push(
         <div className="row" key={i}>
           {renderInputs(
@@ -51,11 +50,8 @@ const Form = (props) => {
 
     for (let i = 0; i < qtdFieldPerRow; i++) {
       if (qtdActualField > fieldLength - 1) {
-        console.log("breaked");
         break;
       }
-      console.log("in normal inpt", field, qtdActualField);
-      //console.log(data[type][field[qtdActualField]], "idx:", i);
       fields.push(
         <div className="col-12 col-md-6" key={field[qtdActualField] + i}>
           <div className="form-group">
@@ -76,7 +72,6 @@ const Form = (props) => {
   {
     if(typeInput === "normalInput")
     {
-      console.log(data)
       const normalInput = (
         <input
           type="text"
