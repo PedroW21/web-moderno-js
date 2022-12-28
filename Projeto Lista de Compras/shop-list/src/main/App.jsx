@@ -36,7 +36,7 @@ function App()
   const clearState = () =>
   {
     setProductName('');
-    setProductValue(' ');
+    setProductValue('');
   }
 
   const input1 = (e) =>
@@ -111,7 +111,6 @@ function App()
     const tr = e.target.parentNode.parentNode;
     const productName = tr.childNodes[0].innerHTML;
 
-    console.log(products)
     const newProducts = products.products.filter(product => product.productName !== productName) 
     
     if(newProducts.length === 0)
@@ -131,13 +130,12 @@ function App()
       <h1>Listinha de Compras</h1>
 
       <div className='inputs'>
-        <Input label='Produto' type='text' value={product.productName} input1 = {input1}/>
-        <Input label='Preço' type='number' value={product.productValue} input2 = {input2}/>
+        <Input label='Produto' type='text' value={product.productName} input1 = {input1} />
+        <Input label='Preço' type='number' value={product.productValue} input2 = {input2} />
       </div>
       
       <div className='buttons'>
         <Button label='SALVAR' save={saveValueLocalStorage} />
-        {/* <Button label= 'TOTAL ' getTotalValue={getTotalValue}/> */}
       </div>
       
       <span className='totalValue'>TOTAL: R${totalValue}</span>
