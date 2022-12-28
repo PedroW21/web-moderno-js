@@ -44,10 +44,6 @@ export default class Calculator extends Component
         this.setState({values: [0,0]});
     }
 
-    addParentheses = () => {
-        alert('NOT YET IMPLEMENTED MY NOBLE USER :D')
-    }
-
     removeDigit = () =>
     {
         let actualDisplayedValue = this.state.displayedValue;
@@ -167,8 +163,7 @@ export default class Calculator extends Component
         return(
             <div className='calculator'>
                 <Display value={this.state.displayedValue}/>
-                <Button label='AC' click= {this.resetCalc}/>
-                <Button label='()' click= {this.addParentheses}/>
+                <Button label='AC' click= {this.resetCalc} ac/>
                 <Button label='%' click= {this.operation}/>
                 <Button label='/' click= {this.operation}/>
                 <Button label='7' click= {this.addDigit}/>
