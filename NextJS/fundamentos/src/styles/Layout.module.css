@@ -1,0 +1,31 @@
+.layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #777;
+}
+
+.cabecalho a {
+  background-color: crimson;
+  text-decoration: none;
+  color: white;
+  font-size: 1.5em;
+  padding: 5px 12px;
+  border-radius: 5px;
+}
+
+.cabecalho h1 {
+  font-size: 1.4em;
+}
+
+.conteudo {
+  padding: 25px;
+  height: 100%;
+}
