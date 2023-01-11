@@ -1,21 +1,22 @@
 const AnimeTable = (props) => 
 {
+
   const renderRows = (obj, editAction, deleteAction) => 
   {
     
     return obj.map((anime, idx) => {
       return (
         <tr key={idx}>
-          <td>{anime.name}</td>
-          <td>{anime.streaming}</td>
-          <td>{anime.movies}</td>
-          <td>{anime.seasons}</td>
-          <td>
+          <td style={{fontSize: '.6em'}}>{anime.name}</td>
+          <td style={{fontSize: '.6em'}}>{anime.streaming}</td>
+          <td style={{fontSize: '.6em'}}>{anime.movies}</td>
+          <td style={{fontSize: '.6em'}}>{anime.seasons}</td>
+          <td style={{fontSize: '.6em'}}>
             <ul className="list-unstyled">
                 {renderEps(anime.episodes)}
             </ul>
           </td>
-          <td>{anime.finished ? "Sim" : "Não"}</td>
+          <td style={{fontSize: '.6em'}}>{anime.finished ? "Sim" : "Não"}</td>
           <td>
             <button
               className="btn btn-warning m-1"
@@ -47,16 +48,16 @@ const AnimeTable = (props) =>
   }
 
   return (
-    <table className="table mt-4 text-center">
+    <table className="table table-sm mt-4 text-center">
       <thead>
         <tr>
-          <th>Nome</th>
-          <th>Streaming</th>
-          <th>Filmes</th>
-          <th>Temporadas</th>
-          <th>Episodios</th>
-          <th>Terminou?</th>
-          <th>Ações</th>
+          <th style={{fontSize: '.55em'}}>Nome</th>
+          <th style={{fontSize: '.55em'}}>Streaming</th>
+          <th style={{fontSize: '.55em'}}>Filmes</th>
+          <th style={{fontSize: '.55em'}}>Temporadas</th>
+          <th style={{fontSize: '.55em'}}>Episodios</th>
+          <th style={{fontSize: '.55em'}}>Terminou?</th>
+          <th style={{fontSize: '.55em'}}>Ações</th>
         </tr>
       </thead>
       <tbody>{renderRows(props.props, props.edit, props.delete)}</tbody>

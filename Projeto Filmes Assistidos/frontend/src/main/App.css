@@ -1,8 +1,11 @@
 :root {
   --logo-height: 120px;
+  --logo-height-sm: 85px;
   --header-height: 120px;
   --aside-width: 225px;
   --footer-height: 40px;
+  --footer-height-sm: 60px;
+  --menu-top-height: 80px;
 
   --menu-color: #333745;
   --menu-text-color: #FFF;
@@ -58,4 +61,27 @@ main.content {
 
 footer.footer {
   grid-area: footer;
+}
+
+
+@media (max-width: 768px) {
+  .app
+  {
+    grid-template-columns: 1fr;
+
+    grid-template-rows: 
+      var(--logo-height-sm)
+      var(--menu-top-height)
+      var(--header-height)
+      1fr
+      var(--footer-height-sm)
+    ;
+    grid-template-areas: 
+    'logo'
+    'menu'
+    'header'
+    'content'
+    'footer';
+  }
+
 }

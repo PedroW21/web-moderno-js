@@ -109,6 +109,7 @@ const Filmes = (props) => {
         type={"movie"}
         updateFields={updateFields}
       />
+      
       <Table
         label={fields.label}
         data={movie.list}

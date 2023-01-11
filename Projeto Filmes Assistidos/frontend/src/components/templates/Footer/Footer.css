@@ -10,3 +10,19 @@ footer.footer
 
     box-shadow: var(--shadow);
 }
+
+@media (max-width: 768px) {
+    footer.footer
+    {
+        justify-content: center;
+        padding-right: 0;
+        font-size: 1.25em;
+    }
+}
+
+@media (max-width: 576px) {
+    footer.footer
+    {
+        margin-top: 10px;
+    }
+}

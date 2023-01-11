@@ -19,37 +19,48 @@ const headerProps = {
 };
 
 const initialState = {
-    series: {
-      name: "",
-      type: "series",
-      streaming: "",
-      seasons: '',
-      episodes: '',
-      selectFinished: false,
-    },
-    list: [],
-  };
-  
-  const fields = {
-    name: ["name", "streaming", "seasons", "episodes", "selectFinished"],
-    label: ["Nome da Série", "Onde assitir?", "Quantas temporadas?", "Quantos episodios?", "Terminou?"],
-    placeholders: ["Digite o nome da serie", "Qual plataforma esta disponivel?", "Digite quantas temporadas tem atualmente", "Quantos episodios tem atualmente? (separe por virgula)", ""]
-  };
-  
-  const formConfig = {
-    qtdFieldPerRow: 2,
-    qtdRows: 3,
-  };
+  series: {
+    name: "",
+    type: "series",
+    streaming: "",
+    seasons: "",
+    episodes: "",
+    selectFinished: false,
+  },
+  list: [],
+};
+
+const fields = {
+  name: ["name", "streaming", "seasons", "episodes", "selectFinished"],
+  label: [
+    "Nome da Série",
+    "Onde assitir?",
+    "Quantas temporadas?",
+    "Quantos episodios?",
+    "Terminou?",
+  ],
+  placeholders: [
+    "Digite o nome da serie",
+    "Qual plataforma esta disponivel?",
+    "Digite quantas temporadas tem atualmente",
+    "Quantos episodios tem atualmente? (separe por virgula)",
+    "",
+  ],
+};
+
+const formConfig = {
+  qtdFieldPerRow: 2,
+  qtdRows: 3,
+};
 
 const Series = (props) => {
-
   const [series, setSeries] = useState({ ...initialState });
 
   //load table when ready
   useEffect(() => {
     axios.get(toWatchUrl).then((res) => {
       let list = res.data;
-      list = list.filter(serie => serie.type === "series")
+      list = list.filter((serie) => serie.type === "series");
       setSeries({ series: { ...initialState.series }, list });
     });
   }, []);
@@ -67,12 +78,21 @@ const Series = (props) => {
       const seriesToSave = { ...series.series };
       putOnDb(seriesToSave);
 
-      const list = series.list.filter((series) => series.id !== seriesToSave.id);
+      const list = series.list.filter(
+        (series) => series.id !== seriesToSave.id
+      );
       list.push(seriesToSave);
 
       setSeries({ series: { ...initialState.series }, list });
     } else {
-      saveOnDb(series.series, series.list, setSeries, initialState, series, "series");
+      saveOnDb(
+        series.series,
+        series.list,
+        setSeries,
+        initialState,
+        series,
+        "series"
+      );
     }
   };
 
@@ -107,7 +127,12 @@ const Series = (props) => {
         updateFields={updateFields}
       />
 
-      <Table label={fields.label} data={series.list} editAction={edit} deleteAction={deleteData}/>
+      <Table
+        label={fields.label}
+        data={series.list}
+        editAction={edit}
+        deleteAction={deleteData}
+      />
     </Main>
   );
 };

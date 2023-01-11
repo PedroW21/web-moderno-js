@@ -118,13 +118,13 @@ const Form = (props) => {
       <div className="row">
         <div className="col-12 d-flex justify-content-end mt-2">
           <button
-            className="btn btn-primary m-2"
+            className="btn btn-lg btn-primary m-2"
             onClick={(e) => props.save()}
           >
             Salvar
           </button>
           <button
-            className="btn btn-secondary m-2"
+            className="btn btn-lg btn-secondary m-2"
             onClick={(e) => props.cancel()}
           >
             Cancelar

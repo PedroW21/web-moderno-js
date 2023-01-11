@@ -1,3 +1,5 @@
+import './Table.css';
+
 const Table = (props) => {
   function renderTable(tHead, tData) {
     return (
@@ -16,13 +18,13 @@ const Table = (props) => {
               {tableData(data)}
               <td>
                 <button
-                  className="btn btn-warning m-1"
+                  className="btn btn-lg btn-warning m-1"
                   onClick={() => props.editAction(data)}
                 >
                   <i className="fa fa-pencil"></i>
                 </button>
                 <button
-                  className="btn btn-danger m-1"
+                  className="btn btn-lg btn-danger m-1"
                   onClick={() => props.deleteAction(data)}
                 >
                   <i className="fa fa-trash"></i>
@@ -48,7 +50,7 @@ const Table = (props) => {
   }
 
   return (
-    <table className="table mt-4 text-center">
+    <table className="table table-sm mt-4 text-center">
       {renderTable(props.label, props.data)}
     </table>
   );

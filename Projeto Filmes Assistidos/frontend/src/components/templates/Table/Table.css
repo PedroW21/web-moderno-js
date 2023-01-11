@@ -1,0 +1,22 @@
+@media (max-width: 768px) {
+  th {
+    font-size: .8em;
+    vertical-align: middle;
+  }
+  td
+  {
+    font-size: 1.2em;
+    vertical-align: middle;
+  }
+}
+
+@media (max-width: 576px) {
+  th {
+    font-size: 0.6em;
+    vertical-align: middle;
+  }
+  td {
+    font-size: 0.8em;
+    vertical-align: middle;
+  }
+}

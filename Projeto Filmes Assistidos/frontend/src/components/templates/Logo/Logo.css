@@ -15,3 +15,12 @@ aside.logo .logoText
 
     color: var(--menu-text-color);
 }
+
+@media (max-width: 768px) {
+ 
+    aside.logo .logoText
+    {
+        font-size: 1.6em;
+    }
+    
+}

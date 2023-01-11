@@ -13,3 +13,11 @@ header.header p
 {
     font-size: 1em;
 }
+
+@media (max-width: 576px) {
+    
+    header.header p
+    {
+        font-size: .82em;
+    }
+}
