@@ -41,8 +41,8 @@ const fields = {
 };
 
 const formConfig = {
-  qtdFieldPerRow: 2,
   qtdRows: 3,
+  qtdFieldPerRow: 2
 };
 
 const Filmes = (props) => {
