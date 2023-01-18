@@ -16,7 +16,7 @@ export default function Home() {
   const [visivel, setVisivel] = useState<'tabela' | 'form'>('tabela');
 
   useEffect(() => {
-    repo.obterTodos().then(setClientes)
+    repo.obterTodos().then(setCliente)
   }, [])
 
   function clienteSelecionado(cliente: Cliente) {
@@ -28,7 +28,7 @@ export default function Home() {
 
   function salvarCliente(cliente: Cliente)
   {
-    console.log(cliente);
+    repo.salvar(cliente)
     setVisivel("tabela");
   }
 
