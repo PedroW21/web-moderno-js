@@ -8,6 +8,6 @@ export default interface ClienteRepositorio {
 
     excluir(cliente: Cliente): Promise<void>
     
-    obterTodos(cliente: Cliente): Promise<Cliente[]>
+    obterTodos(): Promise<Cliente[]>
 
 }

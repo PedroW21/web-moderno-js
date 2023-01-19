@@ -9,14 +9,14 @@ import ColecaoCliente from "../../backend/db/ColecaoCliente";
 
 export default function Home() {
 
-  const repo: ClienteRepositorio = new ColecaoCliente()
+  const repo: ClienteRepositorio = new ColecaoCliente();
 
-  const [clientes, setClientes] = useState<Cliente>(Cliente.vazio());
-  const [cliente, setCliente] = useState<Cliente[]>([]);
+  const [clientes, setClientes] = useState<Cliente[]>([]);
+  const [cliente, setCliente] = useState<Cliente>(Cliente.vazio());
   const [visivel, setVisivel] = useState<'tabela' | 'form'>('tabela');
 
   useEffect(() => {
-    repo.obterTodos().then(setCliente)
+    repo.obterTodos().then(setClientes)
   }, [])
 
   function clienteSelecionado(cliente: Cliente) {
