@@ -23,11 +23,15 @@ export default function Home() {
     setVisivel("form");
   }
  
-  function clienteExcluido(cliente: Cliente) {}
+  async function clienteExcluido(cliente: Cliente) {
+    await repo.excluir(cliente);
+    repo.obterTodos();
+  }
  
   function salvarCliente(cliente: Cliente) {
     repo.salvar(cliente);
     setVisivel("tabela");
+    repo.obterTodos();
   }
  
   function novoCliente() {
