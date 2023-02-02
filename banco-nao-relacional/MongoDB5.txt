@@ -1,0 +1,15 @@
+## localField: o campo que se relaciona com estados e que esta em empresas
+## foreignField: o campo que esta no outro documento
+## as: o campo que sera criado 
+
+db.empresas.aggregate([
+    {$match: {nome: 'Bradesco'}},
+    {$lookup: {
+        from: 'estados',
+        localField: 'estadoId',
+        foreignField: "_id",
+        as: 'estado'
+    } 
+    },
+    {$unwind: '$estado'},
+])

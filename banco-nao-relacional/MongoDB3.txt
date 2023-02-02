@@ -1,0 +1,12 @@
+## Vamos pegar o id de uma cidade especifica (Sorocaba nesse caso)
+## Que esta dentro de algum estado no Brasilsao
+## unwind: desenrolar (vai gerar 3 documentos nesse caso)
+##project: retorna um novo "obj" com as propriedades q vc quer
+
+db.estados.aggregate([
+    { $match: { "cidades.nome": "Sorocaba" } },
+    { $unwind: "$cidades" },
+    { $match: { "cidades.nome": "Sorocaba" } },
+    { $project: { _id: "$cidades._id" } }
+])
+

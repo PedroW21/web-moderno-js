@@ -1,0 +1,5 @@
+db.estados.update({sigla: 'SP'}, {$set: {populacao: ....}});
+
+## novo jeito pq esse vai ser 
+
+$lt: last then
